@@ -4,7 +4,7 @@ import Image from "next/image";
 function AppleLogo() {
   return (
     <Image
-      src="/1/apple.png"
+      src="/apple.png"
       alt="apple logo"
       priority
       width={"18"}
