@@ -9,7 +9,7 @@
 }
 
 @layer components {
-  /* 헤더 */
+  /* header */
   .nav-blur {
     @apply bg-zinc-50/85 backdrop-blur-lg;
   }
@@ -19,11 +19,11 @@
   }
 
   .global-nav {
-    @apply h-[44px] px-[16px] py-[14px];
+    @apply h-[44px] px-4 py-3;
   }
 
   .local-nav {
-    @apply min-h-[48px] px-[16px] pt-3
+    @apply min-h-[48px] px-4 pt-3
           transition-[max-height] ease-in-out duration-500;
   }
 
@@ -64,6 +64,93 @@
 
   .local-nav-links .mobile-toggle-button {
     @apply lg:hidden;
+  }
+
+  /* main */
+  .section-content:not(#scroll-section-1, #scroll-section-2) {
+    @apply pt-[50vh];
+  }
+
+  #scroll-section-1 {
+    @apply min-w-[320px] w-[320px] mx-auto
+           desktop:min-w-full desktop:w-full;
+  }
+
+  .main-image {
+    @apply pt-36 pb-14 min-w-[106%] -translate-x-[3%]
+           desktop:min-w-[40vw] desktop:w-[40vw] desktop:mx-auto;
+  }
+
+  #scroll-section-1 h1 {
+    @apply font-semibold text-5xl text-center
+           desktop:text-[15vw];
+  }
+
+  #scroll-section-1 p {
+    @apply mt-6 mb-24 font-bold text-xl text-center
+           desktop:text-[1.7vw] leading-relaxed;
+  }
+
+  .desktop-text {
+    @apply hidden desktop:block;
+  }
+
+  .mobile-text {
+    @apply desktop:hidden;
+  }
+
+  .main-message {
+    @apply min-w-[320px] w-[320px] mx-auto mt-2
+           desktop:min-w-full desktop:w-full desktop:flex desktop:justify-center desktop:items-center;
+  }
+
+  .main-message p {
+    @apply font-extrabold text-4xl leading-tight
+           desktop:font-extrabold desktop:text-[4.4vw] desktop:leading-relaxed desktop:text-center;
+  }
+
+  #scroll-section-3 {
+    @apply min-w-[320px] w-[320px] mx-auto
+           desktop:min-w-[70vw];
+  }
+
+  #scroll-section-3 small {
+    @apply font-semibold text-lg
+           desktop:font-bold desktop:text-[2vw];
+  }
+
+  #scroll-section-3 h2 {
+    @apply font-bold text-5xl mt-3 leading-tight
+           desktop:font-bold desktop:text-[10vw] desktop:mb-[.5em];
+  }
+
+  #scroll-section-3 p {
+    @apply font-bold text-lg mt-4 leading-6
+           desktop:font-bold desktop:text-[1.8vw] desktop:leading-normal desktop:w-[50%] desktop:ml-auto;
+  }
+
+  .desc-message {
+    @apply text-[#86868b] font-bold min-w-[320px] w-[320px] mx-auto
+           desktop:text-[1.2vw] desktop:w-[30vw];
+  }
+
+  .desc-message strong {
+    @apply text-black;
+  }
+
+  #scroll-section-4 div:nth-child(4),
+  #scroll-section-6 p {
+    @apply desktop:text-center desktop:leading-relaxed; /* desktop 브레이크포인트에서만 텍스트를 중앙 정렬 */
+  }
+
+  #scroll-section-7 {
+    @apply min-w-[320px] w-[320px] mx-auto
+           desktop:min-w-[90vw];
+  }
+
+  #scroll-section-7 p {
+    @apply font-bold text-4xl mt-4 leading-tight
+           desktop:text-[5.5vw];
   }
 }
 
