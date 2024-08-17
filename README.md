@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+사전 과제 : AirPods Max Website clone
 
-## Getting Started
+## 네비게이션
 
-First, run the development server:
+### 반응형 (Mobile First)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **기본 네비게이션 메뉴**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  - 큰 화면에서 표시
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **모바일 화면**
+  - 토글 버튼 사용
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 토글 버튼
 
-## Learn More
+- **메뉴 바 애니메이션**
 
-To learn more about Next.js, take a look at the following resources:
+  - **IF 메뉴가 열릴 때:**
+    - 높이 (`max-height`)와 불투명도 (`opacity`) 애니메이션
+    - 메뉴 항목의 위치 (`translate-y`)와 불투명도 애니메이션
+  - **IF 메뉴가 닫힐 때:**
+    - 높이 (`max-height`)와 불투명도 (`opacity`) 애니메이션
+    - 메뉴 항목의 위치 (`translate-y`)와 불투명도 애니메이션
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **스크롤 시 닫힘**
+  - **IF메뉴가 열려 있을 때 스크롤 이벤트 발생 시**:
+    - 메뉴를 닫고 블러 상태도 되돌림
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **블러 부분 클릭 시 닫힘**
+  - **IF 메뉴 외부를 클릭할 때**:
+    - 메뉴를 닫고 블러 상태도 되돌림
 
-## Deploy on Vercel
+- **데스크탑 사이즈로 변경 시 닫힘**
+  - **IF 리사이즈할 때**:
+    - 메뉴를 닫고 블러 상태도 되돌림
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 블러 처리
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **블러 상태가 변경될 때 애니메이션 적용**
+  - **IF 블러가 열릴 때:**
+    - 백드롭 블러와 불투명도 애니메이션
+  - **IF 블러가 닫힐 때:**
+    - 백드롭 블러와 불투명도 애니메이션
