@@ -2,7 +2,7 @@ import React from "react";
 
 function MessageC() {
   return (
-    <div className="sticky-wrapper desc-message-item c">
+    <div className="sticky-wrapper desc-message-item c opacity-0">
       {/* desktop */}
       <p className="desktop-text">
         <strong>텔레스코핑 암</strong>은 부드럽게 길이가

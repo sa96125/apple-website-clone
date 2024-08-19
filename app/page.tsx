@@ -8,7 +8,7 @@ import LocalNavBar from "@/components/navbar/LocalNavBar";
 import HeroSection from "@/components/section-hero";
 import BlendingSection from "@/components/section-blending";
 import DesignSection from "@/components/DesignSection";
-// import CanvasSection from "@/components/section-canvas";
+import CanvasSection from "@/components/section-canvas";
 import ParallaxSection from "@/components/section-parallax";
 import LoopSection from "@/components/section-loop";
 // import CarouselSection from "@/components/section-carousel";
@@ -29,14 +29,13 @@ function HomePage() {
       <BlendingSection />
       {/* 중간 소개절 */}
       <DesignSection />
+      {/* 스크롤 효과절 */}
+      <CanvasSection />
       {/* 상세 소개절 */}
       <ParallaxSection />
       {/* 상단 마무리 */}
       <LoopSection />
-
-      {/* 스크롤 효과절(진행중) */}
-      {/* <CanvasSection /> */}
-      {/* 상품 캐러셀(진행중) */}
+      {/* 상품 캐러셀 */}
       {/* <CarouselSection /> */}
     </div>
   );

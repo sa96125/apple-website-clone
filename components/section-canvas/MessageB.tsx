@@ -2,7 +2,7 @@ import React from "react";
 
 function MessageB() {
   return (
-    <div className="sticky-wrapper desc-message-item b">
+    <div className="sticky-wrapper desc-message-item b opacity-0">
       {/* desktop */}
       <p className="desktop-text">
         <strong>스테인리스 스틸 프레임</strong>을 부드러운

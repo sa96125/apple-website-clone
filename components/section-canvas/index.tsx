@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import MaxCanvas from "./MaxCanvas";
+// import MaxCanvas from "./MaxCanvas";
+import FallbackImage from "./FallbackImage";
 import MessageA from "./MessageA";
 import MessageB from "./MessageB";
 import MessageC from "./MessageC";
@@ -10,7 +11,8 @@ import MessageD from "./MessageD";
 function CanvasSection() {
   return (
     <section className="section-content" id="scroll-section-3">
-      <MaxCanvas />
+      <FallbackImage />
+      {/* <MaxCanvas /> */}
       {/* sticky */}
       <MessageA />
       <MessageB />

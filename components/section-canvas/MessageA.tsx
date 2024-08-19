@@ -2,7 +2,7 @@ import React from "react";
 
 function MessageA() {
   return (
-    <div className="sticky-wrapper desc-message-item a">
+    <div className="sticky-wrapper desc-message-item a opacity-0">
       {/* desktop */}
       <p className="desktop-text">
         헤드밴드의 중심부를 이루는

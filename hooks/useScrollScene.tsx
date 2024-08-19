@@ -105,12 +105,12 @@ const useScrollScene = () => {
           messageA_opacity_out: [1, 0, { start: 0.25, end: 0.3 }],
           messageB_opacity_out: [1, 0, { start: 0.45, end: 0.5 }],
           messageC_opacity_out: [1, 0, { start: 0.65, end: 0.7 }],
-          messageD_opacity_out: [1, 0, { start: 0.85, end: 0.9 }],
+          messageD_opacity_out: [1, 0, { start: 0.80, end: 0.9 }],
 
           messageA_translateY_out: [0, -20, { start: 0.25, end: 0.3 }],
           messageB_translateY_out: [0, -20, { start: 0.45, end: 0.5 }],
           messageC_translateY_out: [0, -20, { start: 0.65, end: 0.7 }],
-          messageD_translateY_out: [0, -20, { start: 0.85, end: 0.9 }],
+          messageD_translateY_out: [0, -200, { start: 0.85, end: 0.9 }],
         },
       },
       {

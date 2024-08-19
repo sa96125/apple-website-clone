@@ -22,7 +22,7 @@ body {
 
 /* 공통 */
 @layer components {
-  .section-content:not(#scroll-section-0, #scroll-section-1) {
+  .section-content:not(#scroll-section-0, #scroll-section-1, #scroll-section-3) {
     @apply mt-[15vh];
   }
 
@@ -171,44 +171,77 @@ body {
 
   #scroll-section-2 .typo-wrapper {
     @apply max-w-[20em] mx-auto
-    sm:max-w-[75vw] sm:mx-auto;
+    desktop:max-w-[75vw] desktop:mx-auto;
   }
 
   #scroll-section-2 small {
     @apply font-semibold text-lg
-    sm:font-bold sm:text-[2vw];
+    desktop:font-bold desktop:text-[2vw];
   }
 
   #scroll-section-2 h2 {
     @apply font-bold text-5xl mt-3 leading-tight
-    sm:font-bold sm:text-[10vw] sm:mb-[.5em];
+    desktop:font-bold desktop:text-[10vw] desktop:mb-[.5em];
   }
 
   #scroll-section-2 p {
     @apply font-bold text-lg mt-4 leading-6
-    sm:font-bold sm:text-[1.8vw] sm:leading-normal sm:ml-auto sm:w-[50%];
+    desktop:font-bold desktop:text-[1.8vw] desktop:leading-normal desktop:ml-auto desktop:w-[50%];
   }
 }
 
 /* 섹션3 : 스크롤 효과절 */
 @layer components {
   #scroll-section-3 {
-    @apply border-4 border-red-500;
+    @apply min-w-[350px] w-[350px] mx-auto
+    desktop:min-w-full desktop:w-full desktop:h-full
+           2xl:pt-[3em];
   }
 
-  /* .canvas-container {
-    @apply w-screen sticky top-0 border-4 border-red-500
-           desktop:h-[100vh] desktop:overflow-hidden;
-  } */
+  #scroll-section-3 .product-image {
+    @apply pt-36 pb-14 min-w-[350px]
+    desktop:flex desktop:h-screen desktop:justify-center desktop:items-center
+           desktop:max-w-[45%] desktop:translate-x-0 desktop:mx-auto desktop:-z-10
+           animate-zoomIn;
+  }
+
+  .canvas-container {
+    @apply w-screen sticky top-0 bg-pink-200
+           h-screen desktop:overflow-hidden;
+  }
 
   .desc-message-item {
-    @apply min-w-[320px] w-[320px] 
-           desktop:min-w-full desktop:w-full desktop:flex desktop:justify-center desktop:items-center;
+    @apply min-w-[300px] w-[300px] top-[35vh] text-start
+    desktop:min-w-full desktop:w-full desktop:flex desktop:justify-center desktop:items-center ;
+  }
+
+  .desc-message-item.a,
+  .desc-message-item.b,
+  .desc-message-item.c,
+  .desc-message-item.d {
+    @apply top-[75vh];
+  }
+
+  .desc-message-item.a {
+    @apply desktop:top-[15vh] desktop:mr-[10vw];
+  }
+
+  .desc-message-item.b {
+    @apply desktop:top-[50vh] desktop:mr-[20vw];
+  }
+
+
+  .desc-message-item.c {
+    @apply desktop:top-[25vh] desktop:ml-[25vw];
+  }
+
+  .desc-message-item.d {
+    @apply desktop:top-[60vh] desktop:ml-[33vw];
   }
 
   .desc-message-item p {
-    @apply text-[#86868b] font-bold min-w-[320px] w-[320px] mx-auto
-           desktop:text-[1.2vw] desktop:w-[30vw];
+    @apply text-[#86868b] font-bold min-w-[320px] w-[320px] mx-auto 
+    desktop:text-[1.2vw] desktop:w-[30vw] desktop:leading-relaxed;
   }
 
   .desc-message-item strong {
@@ -217,12 +250,13 @@ body {
 
   .desc-message-item-2 p {
     @apply text-[#d1e8fd] font-bold min-w-[320px] w-[320px] mx-auto
-           desktop:text-[1.2vw] desktop:w-[30vw];
+    desktop:text-[1.2vw] desktop:w-[30vw];
   }
 
   .desc-message-item-2 strong {
     @apply text-white;
   }
+
 }
 
 /* 섹션4 : 상세 소개절 */
@@ -239,10 +273,6 @@ body {
 
 /* 레거시 */
 @layer components {
-  #scroll-section-3 div:nth-child(4),
-  #scroll-section-5 p {
-    @apply desktop:text-center desktop:leading-relaxed; /* desktop 브레이크포인트에서만 텍스트를 중앙 정렬 */
-  }
 
   #scroll-section-6 {
     @apply min-w-[320px] w-[320px] mx-auto

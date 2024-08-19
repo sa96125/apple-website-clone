@@ -2,7 +2,7 @@ import React from "react";
 
 function MessageD() {
   return (
-    <div className="sticky-wrapper desc-message-item d">
+    <div className="sticky-wrapper desc-message-item d opacity-0">
       <p>
         <strong>아름다운 산화 피막 알루미늄 이어컵</strong>에는
         <br /> 혁신적으로 설계된 메커니즘이 적용되어 있어
