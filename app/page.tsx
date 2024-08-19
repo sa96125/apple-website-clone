@@ -36,7 +36,7 @@ function HomePage() {
 
       {/* 스크롤 효과절(진행중) */}
       {/* <CanvasSection /> */}
-      {/* 상품 캐러셀(미구현) */}
+      {/* 상품 캐러셀(진행중) */}
       {/* <CarouselSection /> */}
     </div>
   );
