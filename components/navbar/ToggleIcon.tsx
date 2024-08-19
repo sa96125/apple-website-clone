@@ -6,9 +6,7 @@ type ToggleIconProps = {
 };
 
 const ToggleIcon: React.FC<ToggleIconProps> = ({ isMenuOpen }) => {
-  return (
-    <>{isMenuOpen ? <SlArrowUp size={16} /> : <SlArrowDown size={16} />}</>
-  );
+  return isMenuOpen ? <SlArrowUp size={16} /> : <SlArrowDown size={16} />;
 };
 
 export default ToggleIcon;
