@@ -5,15 +5,14 @@ import useScrollScene from "@/hooks/useScrollScene";
 
 import GlobalNavBar from "@/components/navbar/GlobalNavBar";
 import LocalNavBar from "@/components/navbar/LocalNavBar";
+import HeroSection from "@/components/section-hero";
+import BlendingSection from "@/components/section-blending";
+import DesignSection from "@/components/DesignSection";
+import CanvasSection from "@/components/section-canvas";
+import ParallaxSection from "@/components/section-parallax";
+import LoopSection from "@/components/section-loop";
 
-import HeroSection from "@/components/hero-section";
-import BlendingSection from "@/components/blending-section";
-import InteractionC from "@/components/InteractionC";
-import InteractionD from "@/components/InteractionD";
-import InteractionE from "@/components/InteractionE";
-import InteractionF from "@/components/InteractionF";
-import InteractionG from "@/components/InteractionG";
-
+import CarouselSection from "@/components/section-carousel";
 
 function HomePage() {
   const { container } = useScrollScene();
@@ -32,12 +31,20 @@ function HomePage() {
       {/* 비디오 중간절 */}
       <BlendingSection />
 
-      {/* ... */}
-      <InteractionC />
-      <InteractionD />
-      <InteractionE />
-      <InteractionF />
-      <InteractionG />
+      {/* 중간 소개절 */}
+      <DesignSection />
+
+      {/* 스크롤 효과절 */}
+      {/* <CanvasSection /> */}
+
+      {/* 상세 소개절 */}
+      <ParallaxSection />
+
+      {/* 상단 마무리 */}
+      <LoopSection />
+
+      {/* 상품 캐러셀 */}
+      <CarouselSection />
     </div>
   );
 }
