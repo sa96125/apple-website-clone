@@ -6,6 +6,9 @@ let currentScene = 0;
 let prevScrollHeight = 0;
 let enterNewScene = false;
 let scenes: Scene[] = [];
+let acc = 0.1;
+let deleyedScrollY = 0;
+let rafId: number | null = null;
 
 const useScrollScene = () => {
   const container = useRef<HTMLDivElement>(null);
@@ -22,7 +25,7 @@ const useScrollScene = () => {
       },
       {
         type: "sticky",
-        heightNum: 4,
+        heightNum: 5,
         scrollHeight: 0,
         objs: {
           container: document.querySelector("#scroll-section-1"),
@@ -32,25 +35,25 @@ const useScrollScene = () => {
           messageD: document.querySelector("#scroll-section-1 .message-item.d") as HTMLElement,
         },
         values: {
-          messageA_opacity_in: [0, 1, { start: 0.05, end: 0.15 }],
-          messageB_opacity_in: [0, 1, { start: 0.20, end: 0.30 }],
-          messageC_opacity_in: [0, 1, { start: 0.35, end: 0.45 }],
-          messageD_opacity_in: [0, 1, { start: 0.50, end: 0.60 }],
+          messageA_opacity_in: [0, 1, { start: 0.1, end: 0.2 }],
+          messageB_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
+          messageC_opacity_in: [0, 1, { start: 0.5, end: 0.6 }],
+          messageD_opacity_in: [0, 1, { start: 0.7, end: 0.8 }],
           
-          messageA_translateY_in: [100, 0, { start: 0.05, end: 0.20 }],
-          messageB_translateY_in: [100, 0, { start: 0.20, end: 0.35 }],
-          messageC_translateY_in: [100, 0, { start: 0.35, end: 0.50 }],
-          messageD_translateY_in: [100, 0, { start: 0.50, end: 0.65 }],
+          messageA_translateY_in: [50, 0, { start: 0.1, end: 0.2 }],
+          messageB_translateY_in: [50, 0, { start: 0.3, end: 0.4 }],
+          messageC_translateY_in: [50, 0, { start: 0.5, end: 0.6 }],
+          messageD_translateY_in: [50, 0, { start: 0.7, end: 0.8 }],
           
-          messageA_opacity_out: [1, 0, { start: 0.25, end: 0.30 }],
-          messageB_opacity_out: [1, 0, { start: 0.40, end: 0.45 }],
-          messageC_opacity_out: [1, 0, { start: 0.55, end: 0.60 }],
-          messageD_opacity_out: [1, 0, { start: 0.75, end: 0.80 }],
+          messageA_opacity_out: [1, 0, { start: 0.25, end: 0.3 }],
+          messageB_opacity_out: [1, 0, { start: 0.45, end: 0.5 }],
+          messageC_opacity_out: [1, 0, { start: 0.65, end: 0.7 }],
+          messageD_opacity_out: [1, 0, { start: 0.85, end: 0.9 }],
           
-          messageA_translateY_out: [0, -100, { start: 0.30, end: 0.35 }],
-          messageB_translateY_out: [0, -100, { start: 0.45, end: 0.50 }],
-          messageC_translateY_out: [0, -100, { start: 0.60, end: 0.65 }],
-          messageD_translateY_out: [0, -100, { start: 0.75, end: 0.90 }],
+          messageA_translateY_out: [0, -50, { start: 0.25, end: 0.3 }],
+          messageB_translateY_out: [0, -50, { start: 0.45, end: 0.5 }],
+          messageC_translateY_out: [0, -50, { start: 0.65, end: 0.7 }],
+          messageD_translateY_out: [0, -50, { start: 0.85, end: 0.9 }],
           
         },
       },
@@ -130,12 +133,25 @@ const useScrollScene = () => {
 
     window.addEventListener("load", setLayout);
     window.addEventListener("resize", setLayout);
-    window.addEventListener("scroll", scrollLoop);
+    window.addEventListener("scroll", () => {
+      scrollY = window.scrollY;
+      if (!rafId) {
+        rafId = requestAnimationFrame(scrollLoop);
+      }
+    });
 
     return () => {
       window.removeEventListener("load", setLayout);
       window.removeEventListener("resize", setLayout);
-      window.removeEventListener("scroll", scrollLoop);
+      window.removeEventListener("scroll", () => {
+        scrollY = window.scrollY;
+        if (!rafId) {
+          rafId = requestAnimationFrame(scrollLoop);
+        }
+      });
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
     };
   }, []);
 
@@ -163,8 +179,16 @@ const useScrollScene = () => {
     }
   }, []);
 
-  const scrollLoop = useCallback(() => {
-    scrollY = window.scrollY;
+  function scrollLoop() {
+    deleyedScrollY += (scrollY - deleyedScrollY) * acc;
+
+    if (Math.abs(scrollY - deleyedScrollY) < 1) {
+      deleyedScrollY = scrollY;
+      rafId = null; // 애니메이션 완료 시 requestAnimationFrame 종료
+    } else {
+      rafId = requestAnimationFrame(scrollLoop);
+    }
+
     enterNewScene = false;
     prevScrollHeight = 0;
 
@@ -172,24 +196,25 @@ const useScrollScene = () => {
       prevScrollHeight += scenes[i].scrollHeight;
     }
 
-    if (scrollY > prevScrollHeight + scenes[currentScene].scrollHeight) {
+    if (deleyedScrollY > prevScrollHeight + scenes[currentScene].scrollHeight) {
       enterNewScene = true;
       currentScene++;
       container.current?.setAttribute("id", `show-scene-${currentScene}`);
     }
 
-    if (scrollY < prevScrollHeight) {
+    if (deleyedScrollY < prevScrollHeight) {
       enterNewScene = true;
       if (currentScene === 0) return;
       currentScene--;
       container.current?.setAttribute("id", `show-scene-${currentScene}`);
     }
 
-    if (enterNewScene) return;
-    playAnimation();
-  }, []);
+    if (!enterNewScene) {
+      playAnimation();
+    }
+  };
 
-  const playAnimation = useCallback(() => {
+  function playAnimation() {
     const objs = scenes[currentScene].objs;
     const values = scenes[currentScene].values;
     const currentScrollY = scrollY - prevScrollHeight;
@@ -249,9 +274,9 @@ const useScrollScene = () => {
       case 5:
         break;
     }
-  }, []);
+  };
 
-  const calcValues = (values: any, currentScrollY: any) => {
+  function calcValues(values: any, currentScrollY: number) {
     let rv;
     const scrollHeight = scenes[currentScene].scrollHeight;
     const scrollRatio = currentScrollY / scrollHeight;
@@ -274,6 +299,15 @@ const useScrollScene = () => {
 
     return rv;
   };
+
+  function checkMenu() {
+    if(scrollY > 48) {
+      document.body.classList.add('local-nav-sticky');
+    } else {
+      document.body.classList.remove('local-nav-sticky');  
+    }
+  }
+  
 
   return { container };
 };
