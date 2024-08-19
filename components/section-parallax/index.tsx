@@ -14,7 +14,7 @@ function ParallaxSection() {
     >
       <div
         className="w-full max-h-[600px] overflow-hidden
-                   sm:max-h-[800px] "
+                   sm:max-h-[1400px] "
       >
         <ImageA />
       </div>
