@@ -13,15 +13,15 @@ function ParallaxSection() {
                         sm:flex-row sm:max-w-[85%] mx-auto "
     >
       <div
-        className="w-full max-h-[600px] overflow-hidden
-                   sm:max-h-[1400px] "
+        className="w-full max-h-[130vw] overflow-hidden
+                   desktop:max-h-[1400px] "
       >
         <ImageA />
       </div>
 
       <div
         className="flex flex-col gap-8 items-center min-w-[300px] w-[80vw] mx-auto text-center
-                      sm:w-[60%]
+                      desktop:w-[60%]
       "
       >
         <ImageB />
