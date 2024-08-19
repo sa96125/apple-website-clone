@@ -2,17 +2,25 @@
 
 import React from "react";
 import useScrollScene from "@/hooks/useScrollScene";
-
-import GlobalNavBar from "@/components/navbar/GlobalNavBar";
-import LocalNavBar from "@/components/navbar/LocalNavBar";
-import HeroSection from "@/components/section-hero";
-import BlendingSection from "@/components/section-blending";
+import dynamic from "next/dynamic";
 import DesignSection from "@/components/DesignSection";
-import CanvasSection from "@/components/section-canvas";
-import ParallaxSection from "@/components/section-parallax";
-import LoopSection from "@/components/section-loop";
 
-import CarouselSection from "@/components/section-carousel";
+const GlobalNavBar = dynamic(() => import("@/components/navbar/GlobalNavBar"), {
+  ssr: false,
+});
+const LocalNavBar = dynamic(() => import("@/components/navbar/LocalNavBar"), {
+  ssr: false,
+});
+const HeroSection = dynamic(() => import("@/components/section-hero"), {
+  ssr: false,
+});
+const BlendingSection = dynamic(() => import("@/components/section-blending"), {
+  ssr: false,
+});
+const ParallaxSection = dynamic(() => import("@/components/section-parallax"));
+const LoopSection = dynamic(() => import("@/components/section-loop"));
+// const CanvasSection = dynamic(() => import("@/components/section-canvas"));
+// const CarouselSection = dynamic(() => import("@/components/section-carousel"));
 
 function HomePage() {
   const { container } = useScrollScene();
@@ -27,24 +35,19 @@ function HomePage() {
 
       {/* 상단 */}
       <HeroSection />
-
       {/* 비디오 중간절 */}
       <BlendingSection />
-
       {/* 중간 소개절 */}
       <DesignSection />
-
-      {/* 스크롤 효과절 */}
-      {/* <CanvasSection /> */}
-
       {/* 상세 소개절 */}
       <ParallaxSection />
-
       {/* 상단 마무리 */}
       <LoopSection />
 
-      {/* 상품 캐러셀 */}
-      <CarouselSection />
+      {/* 스크롤 효과절(미구현) */}
+      {/* <CanvasSection /> */}
+      {/* 상품 캐러셀(미구현) */}
+      {/* <CarouselSection /> */}
     </div>
   );
 }
