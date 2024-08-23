@@ -14,10 +14,10 @@ import LoopSection from "@/components/section-loop";
 // import CarouselSection from "@/components/section-carousel";
 
 function HomePage() {
-  const { container } = useScrollScene();
+  // const { container } = useScrollScene();
 
   return (
-    <div ref={container}>
+    <div>
       {/* 네비게이션 */}
       <header>
         <GlobalNavBar />

@@ -22,8 +22,12 @@ body {
 
 /* 공통 */
 @layer components {
-  .section-content:not(#scroll-section-0, #scroll-section-1, #scroll-section-3) {
+  .section-gap:not(#scroll-section-0, #scroll-section-1, #scroll-section-3) {
     @apply mt-[15vh];
+  }
+
+  .mobile-layout {
+    @apply min-w-[320px] px-4 mx-auto
   }
 
   #show-scene-0 #scroll-section-0 .sticky-wrapper,
@@ -109,38 +113,6 @@ body {
 
   .local-nav-links .mobile-toggle-button {
     @apply lg:hidden;
-  }
-}
-
-/* 섹션1 : 상단 인트로 */
-@layer components {
-  #scroll-section-0 {
-    @apply min-w-[320px] w-[320px] mx-auto
-           desktop:min-w-full desktop:w-full desktop:h-full
-           2xl:pt-[3em];
-  }
-
-  #scroll-section-0 .product-image {
-    @apply pt-36 pb-14 
-           desktop:flex desktop:h-screen desktop:justify-center desktop:items-center
-           desktop:max-w-[40%] desktop:translate-x-0 desktop:mx-auto desktop:-z-10
-           animate-zoomIn;
-  }
-
-  #scroll-section-0 .product-name {
-    @apply desktop:flex desktop:h-screen desktop:absolute desktop:top-[4vh] desktop:w-full desktop:justify-center desktop:items-center
-           desktop:-z-20 animate-fadeInDelayed opacity-0
-           2xl:pt-[3em];
-  }
-
-  #scroll-section-0 .product-name h1 {
-    @apply font-semibold text-5xl text-center
-           desktop:text-[16vw];
-  }
-
-  #scroll-section-0 p {
-    @apply pt-6 pb-32 font-bold text-xl text-center 
-           desktop:pt-[4em] desktop:text-[1.9rem] desktop:leading-relaxed;
   }
 }
 

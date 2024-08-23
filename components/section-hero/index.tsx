@@ -1,17 +1,16 @@
 "use client";
 
 import React from "react";
-import TypoTitle from "./TypoTitle";
-import TypoDescription from "./TypoDescription";
 import MaxImage from "./MaxImage";
+import HeroTitle from "./HeroTitle";
+import HeroDescription from "./HeroDescription";
 
 function HeroSection() {
   return (
-    <section className="section-content" id="scroll-section-0">
-      {/* static */}
+    <section id="scroll-section-0" className="section-gap mobile-layout" >
       <MaxImage />
-      <TypoTitle />
-      <TypoDescription />
+      <HeroTitle />
+      <HeroDescription />
     </section>
   );
 }
